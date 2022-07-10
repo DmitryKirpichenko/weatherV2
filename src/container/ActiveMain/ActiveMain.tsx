@@ -9,27 +9,52 @@ import { Country } from "../../components/Country/Counry";
 import { DownWeatherPanel } from "../../components/DownWeatherPanel/DownWeatherPanel";
 import { InputCity } from "../../components/InputCity/InputCity";
 
-interface IActiveMain{
+interface IActiveMain {
     weather: weatherInterface
 }
 
-export const ActiveMain: FC<IActiveMain> = (weather) => {
+export const ActiveMain: FC<IActiveMain> = ({ weather }) => {
     let img = Sun
 
-    console.log('!!!!!!!', weather)
-    if (weather.weather) {
-            img = weather.weather.weather[0].main === 'Rain' ?  Rain  : weather.weather.weather[0].main === 'sunny' ? Sun : Cloud
+    if (weather.city.name !== '') {
+        img = weather.list[0].weather[0].main === 'Rain' ? Rain : weather.list[0].weather[0].main === 'sunny' ? Sun : Cloud
     }
-    return(
+
+
+    let newList: [{
+        dt_txt: string;
+        main: {
+            temp: string;
+        };
+        weather: [{
+            main: string;
+            icon: string;
+        }];
+    }] = [weather.list[0]]
+
+    weather.list.map((item, index) => {
+        if (index > 0) {
+            if ((item.dt_txt.split(' ')[0].split('-')[2] !== newList[newList.length - 1].dt_txt.split(' ')[0].split('-')[2]) 
+            && 
+            (item.dt_txt.split(' ')[1].split(':')[0] === '12')) {
+                newList.push(item)
+            }
+
+        }
+
+    })
+
+
+    return (
         <>
-            {weather.weather ? 
-            <StyledActiveMain img={img}>
-                <InputCity city={weather.weather.name}/>
-                <Data dt={weather.weather.dt}></Data>
-                <Country town={weather.weather.name} country={weather.weather.sys.country}></Country>
-                <DownWeatherPanel icon={weather.weather.weather[0].icon} temp={weather.weather.main.temp}></DownWeatherPanel>
-            </StyledActiveMain> : 
-            <div></div>} 
+            {weather.city.name !== '' ?
+                <StyledActiveMain img={img}>
+                    <InputCity city={weather.city.name} />
+                    <Data lat={weather.city.coord.lat} lon={weather.city.coord.lon} day={weather.list[0].dt}></Data>
+                    <Country town={weather.city.name} country={weather.city.country}></Country>
+                    <DownWeatherPanel list={newList}></DownWeatherPanel>
+                </StyledActiveMain> :
+                <div></div>}
         </>
     )
 }

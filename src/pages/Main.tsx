@@ -17,11 +17,8 @@ export const Main = () => {
     }
 
     useEffect(() => {
-        
         getCity()
     }, [])
-
-    console.log(weather, loading, error)
 
     if (loading) {
         return (
@@ -33,12 +30,12 @@ export const Main = () => {
             <div>{error}</div>
         )
     }
-    if (weather.length) {
-        img = weather[0].weather[0].main === 'Rain' ?  Grey  : weather[0].weather[0].main === 'sunny' ? Sun : Grey
+    if (weather.city.name !== '') {
+        img = weather.list[0].weather[0].main === 'Rain' ?  Grey  : weather.list[0].weather[0].main === 'sunny' ? Sun : Grey
     }
     return(
         <StyledMain img={img}>
-            <ActiveMain weather={weather[0]}></ActiveMain>
+            <ActiveMain weather={weather}></ActiveMain>
         </StyledMain>
     )
 }

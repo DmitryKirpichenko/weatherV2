@@ -1,5 +1,5 @@
 interface weatherState {
-    weather: weatherInterface[];
+    weather: weatherInterface;
     loading: boolean;
     error: null | string
 }
@@ -15,7 +15,7 @@ interface IaddWeather {
 }
 interface IaddWeatherSuccess {
     type: weatherActionType.ADD_WEATHER_SUCCESS;
-    payload: weatherInterface[];
+    payload: weatherInterface;
 }
 interface IaddWeatherError {
     type: weatherActionType.ADD_WEATHER_ERROR;
@@ -23,17 +23,41 @@ interface IaddWeatherError {
 }
 
 export interface weatherInterface {
-    weather: [{ main: string, icon: string }]
-    main: { temp: string }
-    dt: string
-    name: string
-    sys: {country: string}
+    city:{
+        country:string,
+        name:string,
+        coord:{lat:string, lon:string}
+    }
+    list:[{
+        dt_txt:string,
+        dt:string,
+        main:{temp:string},
+        weather:[{
+            main:string,
+            icon:string
+        }]
+    }]
 }
 
 export type weatherAction = IaddWeather | IaddWeatherSuccess | IaddWeatherError
 
 const initialState: weatherState = {
-    weather: [],
+    weather: {
+        city:{
+            country:'',
+            name:'',
+            coord:{lat:'', lon:''}
+        },
+        list:[{
+            dt_txt:'',
+            dt:'',
+            main:{temp:''},
+            weather:[{
+                main:'',
+                icon:''
+            }]
+        }]
+    },
     loading: false,
     error: null
 }
@@ -41,11 +65,11 @@ const initialState: weatherState = {
 export const weatherReducer = (state = initialState, actions: weatherAction): weatherState => {
     switch (actions.type) {
         case weatherActionType.ADD_WEATHER:
-            return { weather: [], loading: true, error: null }
+            return { weather: initialState.weather, loading: true, error: null }
         case weatherActionType.ADD_WEATHER_SUCCESS:
-            return { weather: [...actions.payload], loading: false, error: null }
+            return { weather: actions.payload, loading: false, error: null }
         case weatherActionType.ADD_WEATHER_ERROR:
-            return { weather: [], loading: false, error: actions.payload }
+            return { weather: initialState.weather, loading: false, error: actions.payload }
         default:
             return state
     }
