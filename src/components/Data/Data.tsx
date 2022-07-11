@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { FC, useEffect, useState } from "react";
 import { StyledData, StyledTime, StyledDate } from "./StyledData";
 
-export const Data: FC<{dt:string }> = ({dt }) => {
+export const Data= () => {
     const date = new Date()
     let dataArr = date.toString().split(' ')
     console.log(dataArr)
@@ -30,12 +30,10 @@ export const Data: FC<{dt:string }> = ({dt }) => {
         }
     }
     return (
-        <>
-            {dt &&
                 <StyledData>
                     <StyledTime>{`${hour}:${minute}`}</StyledTime>
                     <StyledDate>{`${dayWeek},${data[2]} ${data[1]} ${data[0]}`}</StyledDate>
-                </StyledData>}</>
+                </StyledData>
 
 
     )

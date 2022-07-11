@@ -23,6 +23,7 @@ export const ActiveMain: FC<IActiveMain> = ({ weather }) => {
 
     let newList: [{
         dt_txt: string;
+        dt:string;
         main: {
             temp: string;
         };
@@ -50,7 +51,7 @@ export const ActiveMain: FC<IActiveMain> = ({ weather }) => {
             {weather.city.name !== '' ?
                 <StyledActiveMain img={img}>
                     <InputCity city={weather.city.name} />
-                    <Data dt={weather.list[0].dt}></Data>
+                    <Data></Data>
                     <Country town={weather.city.name} country={weather.city.country}></Country>
                     <DownWeatherPanel list={newList}></DownWeatherPanel>
                 </StyledActiveMain> :

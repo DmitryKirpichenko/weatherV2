@@ -6,6 +6,7 @@ import { StyledDownWeatherPanel, StyledOtherWeather } from "./StyledDownWeatherP
 export const DownWeatherPanel: FC<{
     list: [{
         dt_txt: string,
+        dt:string,
         main: { temp: string },
         weather: [{
             main: string,
@@ -19,7 +20,7 @@ export const DownWeatherPanel: FC<{
             <StyledOtherWeather>
                 {list.map((item,index) => {
                 if(index !== 0){
-                    return <WeatherBlock key={item.dt_txt} id={index} icon={item.weather[0].icon} temp={item.main.temp}/>
+                    return <WeatherBlock key={item.dt_txt} id={index} icon={item.weather[0].icon} temp={item.main.temp} dt={item.dt}/>
                 }
             })}
             </StyledOtherWeather>
