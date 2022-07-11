@@ -27,4 +27,11 @@ export const StyledCityButton = styled.button`
     position: absolute;
     margin-left: 48%;
     background-color: transparent;
+    @media(max-width: 768px){
+        margin-top: 6%;
+        margin-left: 65%;
+    }
+`
+export const StyledInputWrapper = styled.div`
+    
 `

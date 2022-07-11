@@ -13,7 +13,14 @@ export const Main = () => {
     let img = Sun
 
     const getCity = async () =>{
-        await axios.get('https://geolocation-db.com/json/').then(answer => fetchWeather(answer.data.city))
+        await axios.get('https://geolocation-db.com/json/').then(answer => 
+        {
+            if(answer.data.city !== null){
+                fetchWeather(answer.data.city)
+            }else{
+                fetchWeather('London')
+            }
+            })
     }
 
     useEffect(() => {

@@ -7,6 +7,10 @@ interface IStyledMain {
 export const StyledActiveMain = styled.div`
     width: 80%;
     height: 80%;
+    @media(max-width: 768px){
+        width: 100%;
+        height: 100%;
+    }
     background-image: url(${(props: IStyledMain) => props.img});
     background-size: cover;
     background-repeat: no-repeat;
