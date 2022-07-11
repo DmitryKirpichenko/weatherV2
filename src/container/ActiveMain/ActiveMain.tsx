@@ -50,7 +50,7 @@ export const ActiveMain: FC<IActiveMain> = ({ weather }) => {
             {weather.city.name !== '' ?
                 <StyledActiveMain img={img}>
                     <InputCity city={weather.city.name} />
-                    <Data lat={weather.city.coord.lat} lon={weather.city.coord.lon} day={weather.list[0].dt}></Data>
+                    <Data dt={weather.list[0].dt}></Data>
                     <Country town={weather.city.name} country={weather.city.country}></Country>
                     <DownWeatherPanel list={newList}></DownWeatherPanel>
                 </StyledActiveMain> :
