@@ -8,19 +8,21 @@ interface IWeatherBlock{
     dt: string
 }
 
+const options ={
+    weekday: 'short'
+} as Intl.DateTimeFormatOptions
+
 export const WeatherBlock: FC<IWeatherBlock> = ({id, icon, temp, dt}) => {
     const date = new Date(Number(dt) *1000)
-    const day = date.toString().split(' ')[0]
     return(
         <StyledWeatherBlock number={id}>
             <StyledWeatherBlockDayWrapper>
-            {day}
+            {date.toLocaleDateString('en-US', options)}
             </StyledWeatherBlockDayWrapper>
             <StyledWeatherBlockImgWrapper>
                 <StyledWeatherBlockImg src={require(`../../image/weatherIcon/svg/${icon}.svg`)}/>
             </StyledWeatherBlockImgWrapper>
-            <StyledWeatherBlockTemperature>{(Number(temp) - 273).toFixed()}{'\u00b0'}</StyledWeatherBlockTemperature>
-
+            <StyledWeatherBlockTemperature>{temp}{'\u00b0'}</StyledWeatherBlockTemperature>
         </StyledWeatherBlock>
 
     )

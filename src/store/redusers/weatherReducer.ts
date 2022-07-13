@@ -1,7 +1,7 @@
-import {Iweather} from '../../interfaces/interfaces'
+import { Iweather, INormalizationWeather } from '../../interfaces/interfaces'
 
 interface weatherState {
-    weather: Iweather;
+    weather: INormalizationWeather;
     loading: boolean;
     error: null | string
 }
@@ -17,7 +17,7 @@ interface IaddWeather {
 }
 interface IaddWeatherSuccess {
     type: weatherActionType.ADD_WEATHER_SUCCESS;
-    payload: Iweather;
+    payload: INormalizationWeather;
 }
 interface IaddWeatherError {
     type: weatherActionType.ADD_WEATHER_ERROR;
@@ -28,19 +28,15 @@ export type weatherAction = IaddWeather | IaddWeatherSuccess | IaddWeatherError
 
 const initialState: weatherState = {
     weather: {
-        city:{
-            country:'',
-            name:'',
-            coord:{lat:'', lon:''}
-        },
-        list:[{
-            dt_txt:'',
-            dt:'',
-            main:{temp:''},
-            weather:[{
-                main:'',
-                icon:''
-            }]
+        country: '',
+        city: '',
+        coord: { lat: '', lon: '' },
+        fiveDayWeather: [{
+            dt_txt: '',
+            dt: '',
+            temperature: '',
+            weatherName: '',
+            weatherIcon: ''
         }]
     },
     loading: false,

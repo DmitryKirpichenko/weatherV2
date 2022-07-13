@@ -13,8 +13,6 @@ export const StyledWeatherBlock = styled.div`
     grid-row-gap: 0px;
 `
 export const StyledWeatherBlockDay = styled.p`
-    margin-top: 0;
-    margin-bottom: 0;
     font-size: 20px;
 `
 export const StyledWeatherBlockImgWrapper = styled.div`
@@ -33,12 +31,10 @@ export const StyledWeatherBlockDayWrapper = styled.p`
     align-items: flex-end;
     justify-content: center;
     margin-bottom: 10%;
-    margin-top: 0;
-    margin-bottom: 0;
 `
 export const StyledWeatherBlockTemperature = styled.p`
     grid-area: 3 / 1 / 4 / 2; 
     font-size: 28px;
-    margin-top: 0;
-    margin-bottom: 0;
+    display: flex;
+    justify-content: center;
 `

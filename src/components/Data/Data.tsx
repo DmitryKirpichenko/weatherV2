@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { StyledData, StyledTime, StyledDate } from "./StyledData";
 
-const options ={
+const dateOptions ={
     weekday: 'short',
     day: 'numeric',
     month: 'numeric',
     year: 'numeric'
+} as Intl.DateTimeFormatOptions
+
+const timeOptions ={
+    hour: 'numeric',
+    minute: 'numeric'
 } as Intl.DateTimeFormatOptions
 
 export const Data = () => {
@@ -20,10 +25,8 @@ export const Data = () => {
 
     return (
         <StyledData>
-            <StyledTime>{`${date.getHours()}:${date.getMinutes() > 9 ? date.getMinutes() : '0' + date.getMinutes()}`}</StyledTime>
-            <StyledDate>{date.toLocaleDateString('en-US', options)}</StyledDate>
+            <StyledTime>{date.toLocaleTimeString('en-US', timeOptions)}</StyledTime>
+            <StyledDate>{date.toLocaleDateString('en-US', dateOptions)}</StyledDate>
         </StyledData>
-
-
     )
 }

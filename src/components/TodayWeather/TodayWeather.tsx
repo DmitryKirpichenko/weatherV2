@@ -14,7 +14,7 @@ export const TodayWeather: FC<ITodayWeather> = ({icon, temp}) => {
             <StyledTextWrapper>
                 <StyledText>TODAY</StyledText>
             </StyledTextWrapper>
-            <StyledTemperature>{(Number(temp) - 273).toFixed()}{'\u00b0'}</StyledTemperature>
+            <StyledTemperature>{temp}{'\u00b0'}</StyledTemperature>
         </StyledTodayWeather>
     )
 }

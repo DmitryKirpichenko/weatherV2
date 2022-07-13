@@ -8,11 +8,8 @@ export const StyledData = styled.div`
 `
 export const StyledTime = styled.p`
     font-size: 50px;
-    margin-top: 0;
-    margin-bottom: 0;
+
 `
 export const StyledDate = styled.p`
     font-size: 25px;
-    margin-top: 0;
-    margin-bottom: 0;
 `

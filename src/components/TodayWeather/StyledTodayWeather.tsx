@@ -27,13 +27,6 @@ export const StyledTextWrapper = styled.div`
     
 `
 export const StyledText = styled.p`
-    /* background-color: #09344d;
-    opacity: 1; */
-    padding: 0;
-    margin: 0;
-    /* border-radius: 10px;
-    width: 60%;
-    text-align: center; */
     font-size: 15px;
 `
 
@@ -41,6 +34,4 @@ export const StyledTemperature = styled.p`
     grid-area: 2 / 2 / 3 / 3;
     text-align: left;
     font-size: 46px;
-    margin-top: 0;
-    margin-bottom: 0;
 `
