@@ -2,18 +2,13 @@ import React, { FC } from "react";
 import { TodayWeather } from "../TodayWeather/TodayWeather";
 import { WeatherBlock } from "../WeatherBlock/WeatherBlock";
 import { StyledDownWeatherPanel, StyledOtherWeather } from "./StyledDownWeatherPanel";
+import { IweatherList } from "../../interfaces/interfaces";
 
-export const DownWeatherPanel: FC<{
-    list: [{
-        dt_txt: string,
-        dt:string,
-        main: { temp: string },
-        weather: [{
-            main: string,
-            icon: string
-        }]
-    }]
-}> = ({list}) => {
+interface IDownWeatherPanel{
+    list: IweatherList[]
+}
+
+export const DownWeatherPanel: FC<IDownWeatherPanel> = ({list}) => {
     return (
         <StyledDownWeatherPanel>
             <TodayWeather icon={list[0].weather[0].icon} temp={list[0].main.temp}></TodayWeather>

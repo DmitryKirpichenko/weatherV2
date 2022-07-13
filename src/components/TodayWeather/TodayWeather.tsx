@@ -1,7 +1,11 @@
 import React, { FC } from "react";
 import { StyledIcon, StyledImg, StyledTemperature, StyledTextWrapper, StyledText, StyledTodayWeather } from "./StyledTodayWeather";
 
-export const TodayWeather: FC<{icon: string, temp: string}> = ({icon, temp}) => {
+interface ITodayWeather {
+    icon: string, 
+    temp: string
+}
+export const TodayWeather: FC<ITodayWeather> = ({icon, temp}) => {
     return(
         <StyledTodayWeather>
             <StyledIcon>

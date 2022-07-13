@@ -9,17 +9,21 @@ interface ICitys{
     country: string
 }
 
-export const InputCity: FC<{ city: string }> = ({ city }) => {
+interface IInputCity{
+    city: string 
+}
+
+export const InputCity: FC<IInputCity> = ({ city }) => {
     const { fetchWeather } = useActions()
 
-    let [viewCity, setViewSity] = useState(city)
-    let [citysName, setcitysName] = useState<ICitys[]>([{name:city, country:''}])
+    const [viewCity, setViewSity] = useState(city)
+    const [citysName, setcitysName] = useState<ICitys[]>([{name:city, country:''}])
 
-    let fetchCity = async (name:string) => {
+    const fetchCity = async (name:string) => {
         await axios.get(`http://api.openweathermap.org/geo/1.0/direct?q=${name}&limit=5&appid=${KEY2}`).then(answer => setcitysName(answer.data))
     }
 
-    let handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setViewSity(e.target.value)
         fetchCity(e.target.value)
     }

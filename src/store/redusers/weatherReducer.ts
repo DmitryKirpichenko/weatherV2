@@ -1,5 +1,7 @@
+import {Iweather} from '../../interfaces/interfaces'
+
 interface weatherState {
-    weather: weatherInterface;
+    weather: Iweather;
     loading: boolean;
     error: null | string
 }
@@ -15,28 +17,11 @@ interface IaddWeather {
 }
 interface IaddWeatherSuccess {
     type: weatherActionType.ADD_WEATHER_SUCCESS;
-    payload: weatherInterface;
+    payload: Iweather;
 }
 interface IaddWeatherError {
     type: weatherActionType.ADD_WEATHER_ERROR;
     payload: string
-}
-
-export interface weatherInterface {
-    city:{
-        country:string,
-        name:string,
-        coord:{lat:string, lon:string}
-    }
-    list:[{
-        dt_txt:string,
-        dt:string,
-        main:{temp:string},
-        weather:[{
-            main:string,
-            icon:string
-        }]
-    }]
 }
 
 export type weatherAction = IaddWeather | IaddWeatherSuccess | IaddWeatherError

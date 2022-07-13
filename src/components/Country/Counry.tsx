@@ -1,7 +1,12 @@
 import React, { FC } from "react";
 import { StyledCountry, StyledMain, StyledTown } from "./StyledCountry";
 
-export const Country: FC<{town: string, country: string}> = ({town, country}) => {
+interface ICountry{
+    town: string,
+    country: string
+}
+
+export const Country: FC<ICountry> = ({town, country}) => {
     return(
         <StyledMain>
             <StyledTown>{town}</StyledTown>

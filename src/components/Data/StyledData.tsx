@@ -6,9 +6,13 @@ export const StyledData = styled.div`
     text-align: left;
     margin-left: 20%;
 `
-export const StyledTime = styled.div`
+export const StyledTime = styled.p`
     font-size: 50px;
+    margin-top: 0;
+    margin-bottom: 0;
 `
-export const StyledDate = styled.div`
+export const StyledDate = styled.p`
     font-size: 25px;
+    margin-top: 0;
+    margin-bottom: 0;
 `

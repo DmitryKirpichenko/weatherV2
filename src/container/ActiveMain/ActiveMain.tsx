@@ -3,14 +3,14 @@ import { StyledActiveMain } from "./StyledActiveMain";
 import Cloud from '../../image/Grey/cloud.jpg'
 import Rain from '../../image/Grey/rain.jpeg'
 import Sun from '../../image/Sun/sun.jpg'
-import { weatherInterface } from "../../store/redusers/weatherReducer";
 import { Data } from "../../components/Data/Data";
 import { Country } from "../../components/Country/Counry";
 import { DownWeatherPanel } from "../../components/DownWeatherPanel/DownWeatherPanel";
 import { InputCity } from "../../components/InputCity/InputCity";
+import {Iweather, IweatherList} from '../../interfaces/interfaces'
 
 interface IActiveMain {
-    weather: weatherInterface
+    weather: Iweather
 }
 
 export const ActiveMain: FC<IActiveMain> = ({ weather }) => {
@@ -21,17 +21,7 @@ export const ActiveMain: FC<IActiveMain> = ({ weather }) => {
     }
 
 
-    let newList: [{
-        dt_txt: string;
-        dt:string;
-        main: {
-            temp: string;
-        };
-        weather: [{
-            main: string;
-            icon: string;
-        }];
-    }] = [weather.list[0]]
+    let newList: IweatherList[] = [weather.list[0]]
 
     weather.list.map((item, index) => {
         if (index > 0) {

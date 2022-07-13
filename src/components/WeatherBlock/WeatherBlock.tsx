@@ -1,7 +1,14 @@
 import React, { FC } from 'react'
-import { StyledWeatherBlock, StyledWeatherBlockDay, StyledWeatherBlockDayWrapper, StyledWeatherBlockImg, StyledWeatherBlockImgWrapper, StyledWeatherBlockTemperature } from './StyledWeatherBlock'
+import { StyledWeatherBlock, StyledWeatherBlockDayWrapper, StyledWeatherBlockImg, StyledWeatherBlockImgWrapper, StyledWeatherBlockTemperature } from './StyledWeatherBlock'
 
-export const WeatherBlock: FC<{id: number, icon:string, temp:string, dt: string}> = ({id, icon, temp, dt}) => {
+interface IWeatherBlock{
+    id: number, 
+    icon:string, 
+    temp:string, 
+    dt: string
+}
+
+export const WeatherBlock: FC<IWeatherBlock> = ({id, icon, temp, dt}) => {
     const date = new Date(Number(dt) *1000)
     const day = date.toString().split(' ')[0]
     return(

@@ -37,8 +37,10 @@ export const StyledText = styled.p`
     font-size: 15px;
 `
 
-export const StyledTemperature = styled.div`
+export const StyledTemperature = styled.p`
     grid-area: 2 / 2 / 3 / 3;
     text-align: left;
     font-size: 46px;
+    margin-top: 0;
+    margin-bottom: 0;
 `

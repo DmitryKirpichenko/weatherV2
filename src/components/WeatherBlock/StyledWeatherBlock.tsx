@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
-interface IWeatherBlock{
-    number:number
+interface IWeatherBlock {
+    number: number
 }
 
 export const StyledWeatherBlock = styled.div`
-    grid-area: 1/${(props: IWeatherBlock) => props.number}/2/${(props: IWeatherBlock) => props.number+1};
+    grid-area: 1/${(props: IWeatherBlock) => props.number}/2/${(props: IWeatherBlock) => props.number + 1};
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(3, 1fr);
@@ -13,6 +13,8 @@ export const StyledWeatherBlock = styled.div`
     grid-row-gap: 0px;
 `
 export const StyledWeatherBlockDay = styled.p`
+    margin-top: 0;
+    margin-bottom: 0;
     font-size: 20px;
 `
 export const StyledWeatherBlockImgWrapper = styled.div`
@@ -25,14 +27,18 @@ export const StyledWeatherBlockImg = styled.img`
     width: 50%;
     margin: 0 auto;
 `
-export const StyledWeatherBlockDayWrapper = styled.div`
+export const StyledWeatherBlockDayWrapper = styled.p`
     grid-area: 1 / 1 / 2 / 2;
     display: flex;
     align-items: flex-end;
     justify-content: center;
     margin-bottom: 10%;
+    margin-top: 0;
+    margin-bottom: 0;
 `
-export const StyledWeatherBlockTemperature = styled.div`
+export const StyledWeatherBlockTemperature = styled.p`
     grid-area: 3 / 1 / 4 / 2; 
     font-size: 28px;
+    margin-top: 0;
+    margin-bottom: 0;
 `
