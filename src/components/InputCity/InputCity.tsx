@@ -1,43 +1,55 @@
 import React, { FC, useState } from "react";
+import AsyncSelect from 'react-select/async';
 import axios from "axios";
 import { WEATHERAPIKEY, WEATHERAPIKEY2 } from "../../constants";
 import { useActions } from "../../hooks/useActions";
 import { StyledCityButton, StyledInput } from "./StyledInputCity";
 import { getCitysByNameApi } from "../../utils";
 
-interface ICitys{
-    name:string
+interface ICitys {
+    name: string
     country: string
 }
 
-interface IInputCity{
-    city: string 
+interface IInputCity {
+    city: string
 }
 
 export const InputCity: FC<IInputCity> = ({ city }) => {
     const { fetchWeather } = useActions()
 
     const [viewCity, setViewSity] = useState(city)
-    const [citysName, setcitysName] = useState<ICitys[]>([{name:city, country:''}])
+    const [citysName, setcitysName] = useState<ICitys[]>([{ name: city, country: '' }])
 
-    const fetchCity = async (name:string) => {
-        setcitysName(await getCitysByNameApi(name))
-    }
+    // const fetchCity = async (name: string) => {
+    //     setcitysName(await getCitysByNameApi(name))
+    // }
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setViewSity(e.target.value)
-        fetchCity(e.target.value)
-    }
+    // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    //     setViewSity(e.target.value)
+    //     fetchCity(e.target.value)
+    // }
+
+    const promiseOptions = (inputValue: string) =>
+        new Promise<{value: string, label: string}[]>((resolve) => {
+            resolve(getCitysByNameApi(inputValue).then(answer => answer.map(item => {
+                return {
+                    value: item.name + item.country,
+                    label: item.name
+                }
+            })));
+        });
 
     return (
         <>
-            <StyledInput list="citysList" placeholder={city} onChange={(e) => handleChange(e)}/>
+            <AsyncSelect cacheOptions defaultOptions loadOptions={promiseOptions} />
+            {/* <StyledInput list="citysList" placeholder={city} onChange={(e) => handleChange(e)} />
             <datalist id="citysList">
                 {citysName.map((item) => (
                     <option key={item.country + item.name}>{`${item.name},${item.country}`}</option>
                 ))}
             </datalist>
-            <StyledCityButton onClick={() => fetchWeather(viewCity)}/>
+            <StyledCityButton onClick={() => fetchWeather(viewCity)} /> */}
         </>
     )
 }
