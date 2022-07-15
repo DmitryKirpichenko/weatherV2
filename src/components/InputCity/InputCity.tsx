@@ -3,12 +3,18 @@ import AsyncSelect from 'react-select/async';
 import axios from "axios";
 import { WEATHERAPIKEY, WEATHERAPIKEY2 } from "../../constants";
 import { useActions } from "../../hooks/useActions";
-import { StyledCityButton, StyledInput } from "./StyledInputCity";
+import { StyledCityButton, StyledInput, StyledInputWrapper } from "./StyledInputCity";
 import { getCitysByNameApi } from "../../utils";
+import { keyboard } from "@testing-library/user-event/dist/keyboard";
 
 interface ICitys {
     name: string
     country: string
+}
+
+interface ISelect {
+    value: string,
+    label: string
 }
 
 interface IInputCity {
@@ -18,31 +24,40 @@ interface IInputCity {
 export const InputCity: FC<IInputCity> = ({ city }) => {
     const { fetchWeather } = useActions()
 
-    const [viewCity, setViewSity] = useState(city)
-    const [citysName, setcitysName] = useState<ICitys[]>([{ name: city, country: '' }])
-
-    // const fetchCity = async (name: string) => {
-    //     setcitysName(await getCitysByNameApi(name))
-    // }
-
-    // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    //     setViewSity(e.target.value)
-    //     fetchCity(e.target.value)
-    // }
+    const [selectCity, setViewSity] = useState({ value: city, label: city })
 
     const promiseOptions = (inputValue: string) =>
-        new Promise<{value: string, label: string}[]>((resolve) => {
+        new Promise<ISelect[]>((resolve) => {
             resolve(getCitysByNameApi(inputValue).then(answer => answer.map(item => {
                 return {
-                    value: item.name + item.country,
-                    label: item.name
+                    value: `${item.name}, ${item.country}`,
+                    label: `${item.name}, ${item.country}`
                 }
             })));
         });
+    const searchWeather = (newValue: ISelect | null) => {
+        if (newValue) {
+            fetchWeather(newValue.value)
+        }
+    }
+
+    const handeleInputChange = (newValue: string) => {
+        setViewSity({ value: newValue, label: newValue })
+        return newValue
+    }
 
     return (
         <>
-            <AsyncSelect cacheOptions defaultOptions loadOptions={promiseOptions} />
+            <StyledInputWrapper>
+                <AsyncSelect
+                    menuIsOpen={!!selectCity.value}
+                    onChange={searchWeather}
+                    cacheOptions
+                    defaultOptions
+                    loadOptions={promiseOptions}
+                    onInputChange={handeleInputChange} />
+            </StyledInputWrapper>
+
             {/* <StyledInput list="citysList" placeholder={city} onChange={(e) => handleChange(e)} />
             <datalist id="citysList">
                 {citysName.map((item) => (

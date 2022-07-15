@@ -33,5 +33,14 @@ export const StyledCityButton = styled.button`
     }
 `
 export const StyledInputWrapper = styled.div`
-    
+    display: block;
+   width: 80%;
+   height: 50%;
+   padding: 0 20px;
+   margin-bottom: 10px;
+   margin-top: 10px;
+   opacity: 0.4;
+   font-family: 'Roboto', sans-serif;
+   color: black;
+   grid-area: 1 / 3 / 2 / 5;
 `
