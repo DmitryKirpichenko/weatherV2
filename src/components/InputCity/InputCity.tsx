@@ -36,9 +36,7 @@ export const InputCity: FC<IInputCity> = ({ city }) => {
             })));
         });
     const searchWeather = (newValue: ISelect | null) => {
-        if (newValue) {
-            fetchWeather(newValue.value)
-        }
+        if (newValue) fetchWeather(newValue.value)
     }
 
     const handeleInputChange = (newValue: string) => {
@@ -50,12 +48,14 @@ export const InputCity: FC<IInputCity> = ({ city }) => {
         <>
             <StyledInputWrapper>
                 <AsyncSelect
-                    menuIsOpen={!!selectCity.value}
+                    noOptionsMessage={() => null}
+                    value={selectCity}
                     onChange={searchWeather}
                     cacheOptions
                     defaultOptions
+                    onInputChange={handeleInputChange}
                     loadOptions={promiseOptions}
-                    onInputChange={handeleInputChange} />
+                    />
             </StyledInputWrapper>
 
             {/* <StyledInput list="citysList" placeholder={city} onChange={(e) => handleChange(e)} />
