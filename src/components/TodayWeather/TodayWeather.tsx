@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+
 import { StyledIcon, StyledImg, StyledTemperature, StyledTextWrapper, StyledText, StyledTodayWeather } from "./StyledTodayWeather";
 
 interface ITodayWeather {

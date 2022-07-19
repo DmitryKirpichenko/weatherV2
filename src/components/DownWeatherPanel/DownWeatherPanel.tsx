@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+
 import { TodayWeather } from "../TodayWeather/TodayWeather";
 import { WeatherBlock } from "../WeatherBlock/WeatherBlock";
 import { StyledDownWeatherPanel, StyledOtherWeather } from "./StyledDownWeatherPanel";

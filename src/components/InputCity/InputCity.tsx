@@ -1,11 +1,10 @@
 import React, { FC, useState } from "react";
 import AsyncSelect from 'react-select/async';
-import axios from "axios";
-import { WEATHERAPIKEY, WEATHERAPIKEY2 } from "../../constants";
+
+import { StyledInputWrapper } from "./StyledInputCity";
+
 import { useActions } from "../../hooks/useActions";
-import { StyledCityButton, StyledInput, StyledInputWrapper } from "./StyledInputCity";
 import { getCitysByNameApi } from "../../utils";
-import { keyboard } from "@testing-library/user-event/dist/keyboard";
 
 interface ICitys {
     name: string
@@ -45,26 +44,16 @@ export const InputCity: FC<IInputCity> = ({ city }) => {
     }
 
     return (
-        <>
-            <StyledInputWrapper>
-                <AsyncSelect
-                    noOptionsMessage={() => null}
-                    value={selectCity}
-                    onChange={searchWeather}
-                    cacheOptions
-                    defaultOptions
-                    onInputChange={handeleInputChange}
-                    loadOptions={promiseOptions}
-                    />
-            </StyledInputWrapper>
-
-            {/* <StyledInput list="citysList" placeholder={city} onChange={(e) => handleChange(e)} />
-            <datalist id="citysList">
-                {citysName.map((item) => (
-                    <option key={item.country + item.name}>{`${item.name},${item.country}`}</option>
-                ))}
-            </datalist>
-            <StyledCityButton onClick={() => fetchWeather(viewCity)} /> */}
-        </>
+        <StyledInputWrapper>
+            <AsyncSelect
+                noOptionsMessage={() => null}
+                value={selectCity}
+                onChange={searchWeather}
+                cacheOptions
+                defaultOptions
+                onInputChange={handeleInputChange}
+                loadOptions={promiseOptions}
+            />
+        </StyledInputWrapper>
     )
 }

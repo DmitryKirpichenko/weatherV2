@@ -1,11 +1,14 @@
 import React, { useEffect } from 'react'
+
+import { StyledMain } from './StyledMain'
+import { ActiveMain } from '../container/ActiveMain/ActiveMain'
+
+import { getCityApi } from '../utils'
 import { useActions } from '../hooks/useActions'
 import { useTypeSelector } from '../hooks/useTypeSelector'
-import { StyledMain } from './StyledMain'
+
 import Grey from '../image/Grey/background.jpg'
 import Sun from '../image/Sun/background.jpg'
-import { ActiveMain } from '../container/ActiveMain/ActiveMain'
-import { getCityApi } from '../utils'
 
 export const Main = () => {
     const { loading, error, weather } = useTypeSelector(state => state.weather)

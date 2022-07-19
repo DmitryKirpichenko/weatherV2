@@ -1,12 +1,15 @@
 import React, { FC } from "react";
+
 import { StyledActiveMain } from "./StyledActiveMain";
-import Cloud from '../../image/Grey/cloud.jpg'
-import Rain from '../../image/Grey/rain.jpeg'
-import Sun from '../../image/Sun/sun.jpg'
 import { Data } from "../../components/Data/Data";
 import { Country } from "../../components/Country/Counry";
 import { DownWeatherPanel } from "../../components/DownWeatherPanel/DownWeatherPanel";
 import { InputCity } from "../../components/InputCity/InputCity";
+
+import Cloud from '../../image/Grey/cloud.jpg'
+import Rain from '../../image/Grey/rain.jpeg'
+import Sun from '../../image/Sun/sun.jpg'
+
 import {INormalizationWeather} from '../../interfaces/interfaces'
 
 interface IActiveMain {

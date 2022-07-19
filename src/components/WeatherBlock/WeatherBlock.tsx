@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+
 import { StyledWeatherBlock, StyledWeatherBlockDayWrapper, StyledWeatherBlockImg, StyledWeatherBlockImgWrapper, StyledWeatherBlockTemperature } from './StyledWeatherBlock'
 
 interface IWeatherBlock{
