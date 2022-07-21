@@ -44,6 +44,7 @@ export const InputCity: FC<IInputCity> = ({ city }) => {
     }
 
     return (
+<<<<<<< Updated upstream
         <StyledInputWrapper>
             <AsyncSelect
                 noOptionsMessage={() => null}
@@ -55,5 +56,17 @@ export const InputCity: FC<IInputCity> = ({ city }) => {
                 loadOptions={promiseOptions}
             />
         </StyledInputWrapper>
+=======
+        <>
+            <StyledInput list="citysList" placeholder={city} onChange={(e) => handleChange(e)}></StyledInput>
+            <datalist id="citysList">
+                {citysName.map((item) => (
+                    <option key={item.name + item.country}>{`${item.name},${item.country}`}</option>
+                ))}
+                
+            </datalist>
+            <StyledCityButton onClick={() => fetchWeather(viewCity)}></StyledCityButton>
+        </>
+>>>>>>> Stashed changes
     )
 }

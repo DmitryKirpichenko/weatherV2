@@ -38,6 +38,7 @@ export const Main = () => {
             <div>{error}</div>
         )
     }
+<<<<<<< Updated upstream
     const getImage = () => {
         if (weather.city) {
             if (weather.fiveDayWeather[0].weatherName === 'Sun') return Sun
@@ -47,6 +48,14 @@ export const Main = () => {
     return (
         <StyledMain img={getImage()}>
             <ActiveMain weather={weather} />
+=======
+    if (weather.city.name !== '') {
+        img = weather.list[0].weather[0].main === 'Rain' ?  Grey  : weather.list[0].weather[0].main === 'sunny' ? Sun : Grey
+    }
+    return(
+        <StyledMain img={img}>
+            <ActiveMain weather={weather}></ActiveMain>
+>>>>>>> Stashed changes
         </StyledMain>
     )
 }

@@ -1,7 +1,11 @@
 import { Iweather, INormalizationWeather } from '../../interfaces/interfaces'
 
 interface weatherState {
+<<<<<<< Updated upstream
     weather: INormalizationWeather;
+=======
+    weather: weatherInterface;
+>>>>>>> Stashed changes
     loading: boolean;
     error: null | string
 }
@@ -17,17 +21,42 @@ interface IaddWeather {
 }
 interface IaddWeatherSuccess {
     type: weatherActionType.ADD_WEATHER_SUCCESS;
+<<<<<<< Updated upstream
     payload: INormalizationWeather;
+=======
+    payload: weatherInterface;
+>>>>>>> Stashed changes
 }
 interface IaddWeatherError {
     type: weatherActionType.ADD_WEATHER_ERROR;
     payload: string
 }
 
+<<<<<<< Updated upstream
+=======
+export interface weatherInterface {
+    city:{
+        country:string,
+        name:string,
+        coord:{lat:string, lon:string}
+    }
+    list:[{
+        dt_txt:string,
+        dt:string,
+        main:{temp:string},
+        weather:[{
+            main:string,
+            icon:string
+        }]
+    }]
+}
+
+>>>>>>> Stashed changes
 export type weatherAction = IaddWeather | IaddWeatherSuccess | IaddWeatherError
 
 const initialState: weatherState = {
     weather: {
+<<<<<<< Updated upstream
         country: '',
         city: '',
         coord: { lat: '', lon: '' },
@@ -37,6 +66,21 @@ const initialState: weatherState = {
             temperature: '',
             weatherName: '',
             weatherIcon: ''
+=======
+        city:{
+            country:'',
+            name:'',
+            coord:{lat:'', lon:''}
+        },
+        list:[{
+            dt_txt:'',
+            dt:'',
+            main:{temp:''},
+            weather:[{
+                main:'',
+                icon:''
+            }]
+>>>>>>> Stashed changes
         }]
     },
     loading: false,
