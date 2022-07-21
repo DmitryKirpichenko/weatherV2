@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import searchButton from '../../image/button/search/svg/searchButton.svg'
+import styled from 'styled-components';
+import searchButton from '../../image/button/search/svg/searchButton.svg';
 
 export const StyledInput = styled.input`
     display: block;
@@ -16,7 +16,7 @@ export const StyledInput = styled.input`
    font-family: 'Roboto', sans-serif;
    align-items: center;
    grid-area: 1 / 3 / 2 / 5;
-`
+`;
 export const StyledCityButton = styled.button`
     margin-top: 14px;
     background-image: url(${() => searchButton});
@@ -31,7 +31,7 @@ export const StyledCityButton = styled.button`
         margin-top: 6%;
         margin-left: 65%;
     }
-`
+`;
 export const StyledInputWrapper = styled.div`
     display: block;
    width: 80%;
@@ -43,4 +43,4 @@ export const StyledInputWrapper = styled.div`
    font-family: 'Roboto', sans-serif;
    color: black;
    grid-area: 1 / 3 / 2 / 5;
-`
+`;

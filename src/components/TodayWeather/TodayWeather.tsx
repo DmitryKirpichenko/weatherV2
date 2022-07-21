@@ -1,13 +1,14 @@
-import React, { FC } from "react";
+import React, { FC } from 'react';
 
-import { StyledIcon, StyledImg, StyledTemperature, StyledTextWrapper, StyledText, StyledTodayWeather } from "./StyledTodayWeather";
+import {
+  StyledIcon, StyledImg, StyledTemperature, StyledTextWrapper, StyledText, StyledTodayWeather,
+} from './StyledTodayWeather';
 
 interface ITodayWeather {
-    icon: string, 
+    icon: string,
     temp: string
 }
-export const TodayWeather: FC<ITodayWeather> = ({icon, temp}) => {
-    return(
+export const TodayWeather: FC<ITodayWeather> = ({ icon, temp }) => (
         <StyledTodayWeather>
             <StyledIcon>
                 <StyledImg src={require(`../../image/weatherIcon/svg/${icon}.svg`)}/>
@@ -17,5 +18,4 @@ export const TodayWeather: FC<ITodayWeather> = ({icon, temp}) => {
             </StyledTextWrapper>
             <StyledTemperature>{temp}{'\u00b0'}</StyledTemperature>
         </StyledTodayWeather>
-    )
-}
+);

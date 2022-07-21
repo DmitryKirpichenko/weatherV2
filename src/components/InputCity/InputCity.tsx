@@ -1,15 +1,10 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState } from 'react';
 import AsyncSelect from 'react-select/async';
 
-import { StyledInputWrapper } from "./StyledInputCity";
+import { StyledInputWrapper } from './StyledInputCity';
 
-import { useActions } from "../../hooks/useActions";
-import { getCitysByNameApi } from "../../utils";
-
-interface ICitys {
-    name: string
-    country: string
-}
+import { useActions } from '../../hooks/useActions';
+import { getCitysByNameApi } from '../../utils';
 
 interface ISelect {
     value: string,
@@ -21,30 +16,26 @@ interface IInputCity {
 }
 
 export const InputCity: FC<IInputCity> = ({ city }) => {
-    const { fetchWeather } = useActions()
+  const { fetchWeather } = useActions();
 
-    const [selectCity, setViewSity] = useState({ value: city, label: city })
+  const [selectCity, setViewSity] = useState({ value: city, label: city });
 
-    const promiseOptions = (inputValue: string) =>
-        new Promise<ISelect[]>((resolve) => {
-            resolve(getCitysByNameApi(inputValue).then(answer => answer.map(item => {
-                return {
-                    value: `${item.name}, ${item.country}`,
-                    label: `${item.name}, ${item.country}`
-                }
-            })));
-        });
-    const searchWeather = (newValue: ISelect | null) => {
-        if (newValue) fetchWeather(newValue.value)
-    }
+  const promiseOptions = (inputValue: string) => new Promise<ISelect[]>((resolve) => {
+    resolve(getCitysByNameApi(inputValue).then((answer) => answer.map((item) => ({
+      value: `${item.name}, ${item.country}`,
+      label: `${item.name}, ${item.country}`,
+    }))));
+  });
+  const searchWeather = (newValue: ISelect | null) => {
+    if (newValue) fetchWeather(newValue.value);
+  };
 
-    const handeleInputChange = (newValue: string) => {
-        setViewSity({ value: newValue, label: newValue })
-        return newValue
-    }
+  const handeleInputChange = (newValue: string) => {
+    setViewSity({ value: newValue, label: newValue });
+    return newValue;
+  };
 
-    return (
-<<<<<<< Updated upstream
+  return (
         <StyledInputWrapper>
             <AsyncSelect
                 noOptionsMessage={() => null}
@@ -56,17 +47,5 @@ export const InputCity: FC<IInputCity> = ({ city }) => {
                 loadOptions={promiseOptions}
             />
         </StyledInputWrapper>
-=======
-        <>
-            <StyledInput list="citysList" placeholder={city} onChange={(e) => handleChange(e)}></StyledInput>
-            <datalist id="citysList">
-                {citysName.map((item) => (
-                    <option key={item.name + item.country}>{`${item.name},${item.country}`}</option>
-                ))}
-                
-            </datalist>
-            <StyledCityButton onClick={() => fetchWeather(viewCity)}></StyledCityButton>
-        </>
->>>>>>> Stashed changes
-    )
-}
+  );
+};

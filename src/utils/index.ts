@@ -1,3 +1,3 @@
-export * from './api'
-export * from './normalizationApiAnswer'
-export * from './temperature'
+export * from './api';
+export * from './normalizationApiAnswer';
+export * from './temperature';

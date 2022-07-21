@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 interface IStyledMain {
     img: string
@@ -22,4 +22,4 @@ export const StyledActiveMain = styled.div`
     grid-row-gap: 0px;
 
     color: aliceblue;
-`
+`;

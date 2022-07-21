@@ -1,3 +1,1 @@
-export const kelvinToCelsius = (temperature: string) => {
-    return (Number(temperature) - 273).toFixed()
-}
+export const kelvinToCelsius = (temperature: string) => (Number(temperature) - 273).toFixed();

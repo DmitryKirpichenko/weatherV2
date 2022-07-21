@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const StyledDownWeatherPanel = styled.div`
     width: 100%;
@@ -11,7 +11,7 @@ export const StyledDownWeatherPanel = styled.div`
     grid-template-rows: 1fr;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
-`
+`;
 export const StyledOtherWeather = styled.div`
     grid-area: 1 / 2 / 2 / 4;
     display: grid;
@@ -19,4 +19,4 @@ export const StyledOtherWeather = styled.div`
     grid-template-rows: 1fr;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
-`
+`;
